@@ -3,6 +3,7 @@ import React from 'react';
 import {ListItem, List, Thumbnail, Body, Text, Button,Left,Right, View} from 'native-base';
 import TimeAgo from './Time';
 
+//Creating a list of News
 export default class DataItems extends Component{
 
     constructor(props){
