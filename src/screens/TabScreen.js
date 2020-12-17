@@ -4,10 +4,11 @@ import Tab1 from './Tabs/tab1';
 import Tab2 from './Tabs/tab2';
 import Tab3 from './Tabs/tab3';
 export default class TabsExample extends Component {
+
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor:"#009387"}} hasTabs>
+        <Header style={{backgroundColor:'red'}} hasTabs>
             <Left />
             <Left />
             <Left />
@@ -18,24 +19,24 @@ export default class TabsExample extends Component {
         </Header>
         <Tabs>
           <Tab 
-           tabStyle={{backgroundColor:'#009387'}}
-           activeTabStyle={{backgroundColor:'#009387'}} 
+           tabStyle={{backgroundColor:'red'}}
+           activeTabStyle={{backgroundColor:'red'}} 
            textStyle={{color:'white'}}
-           heading="Tab1">
+           heading="General">
             <Tab1 />
           </Tab>
           <Tab 
-          tabStyle={{backgroundColor:'#009387'}} 
-          activeTabStyle={{backgroundColor:'#009387'}} 
+          tabStyle={{backgroundColor:'red'}} 
+          activeTabStyle={{backgroundColor:'red'}} 
           textStyle={{color:'white'}}
-          heading="Tab2">
+          heading="Bussiness">
             <Tab2 />
           </Tab>
           <Tab 
-          tabStyle={{backgroundColor:'#009387'}} 
-          activeTabStyle={{backgroundColor:'#009387'}} 
+          tabStyle={{backgroundColor:'red'}} 
+          activeTabStyle={{backgroundColor:'red'}} 
           textStyle={{color:'white'}}
-          heading="Tab3">
+          heading="Technology">
             <Tab3 />
           </Tab>
         </Tabs>

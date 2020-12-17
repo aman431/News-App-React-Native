@@ -4,18 +4,36 @@ import { Container, Header, Content, List,Text} from 'native-base';
 import DataItem from '../../component/dataItem'
 import { getArticles } from '../../services/news';
 // import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+import Modal from '../../component/modal';
+// import { article_url } from '../../config/rest_config';
 
 
 export default class ListThumbnailExample extends Component {
   
   constructor(props){
       super(props);
+
       this.state = {
           isLoading: true,
-          data: null
+          data: null,
+          setModalVisible: false,
+          modalArticleData: {}
       }
   }
 
+
+hanldeItemDataonPress = (articleData) => {
+  this.setState({
+    setModalVisible: true,
+    modalArticleData: articleData
+  })
+}
+handleModalClose = () => {
+  this.setState({
+    setModalVisible: false,
+    modalArticleData: {}
+  })
+}
   componentDidMount(){
       getArticles().then(data => {
           this.setState({
@@ -40,7 +58,7 @@ export default class ListThumbnailExample extends Component {
           dataArray = {this.state.data}
           renderRow = {(item) => {
               return (
-                <DataItem data={item} />
+                <DataItem onPress={this.hanldeItemDataonPress} data={item} />
               )
         }} />
      )
@@ -50,6 +68,11 @@ export default class ListThumbnailExample extends Component {
         <Content>
           {view}
         </Content>
+        <Modal 
+          showModal = {this.state.setModalVisible}
+          articleData= {this.state.modalArticleData}
+          onClose={this.handleModalClose}       
+        />
       </Container>
     );
   }

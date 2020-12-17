@@ -1,7 +1,7 @@
 const { Component } = require("react");
 import React from 'react';
 import {ListItem, List, Thumbnail, Body, Text, Button,Left,Right, View} from 'native-base';
-import Time from './Time';
+import TimeAgo from './Time';
 
 export default class DataItems extends Component{
 
@@ -10,6 +10,10 @@ export default class DataItems extends Component{
         this.data = props.data;
     }
 
+    handlePress = () => {
+      const {url,title} = this.data;
+      this.props.onPress({url,title})
+    }
     render(){
         return(
             <ListItem thumbnail>
@@ -19,13 +23,13 @@ export default class DataItems extends Component{
               <Body>
                 <Text numberOfLines={2}>{this.data.title}</Text>
                 <Text note numberOfLines={2}>{this.data.description}</Text>
-                <View style={{ flex: 1, flexDirection: 'row', marginTop: 8, marginLeft: 0}}>
-                  <Text note>{this.data.source.name}</Text>
-                  <Text time={this.data.publishedAt} />
+                <View style={{ flex: 1, flexDirection: 'row', marginTop: 8, marginLeft: 0 }}>
+                    <Text note>{this.data.source.name}</Text>
+                    <TimeAgo time={this.data.publishedAt}/>
                 </View>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={this.handlePress}>
                   <Text>View</Text>
                 </Button>
               </Right>
